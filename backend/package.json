@@ -1,0 +1,13 @@
+{
+  "name": "docker-compose-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Docker Compose demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongodb": "^6.12.0"
+  }
+}

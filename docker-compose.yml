@@ -1,0 +1,40 @@
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+    image: yashvikothari/docker-compose-frontend:latest
+    container_name: frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+    image: yashvikothari/docker-compose-backend:latest
+    container_name: backend
+    expose:
+      - "3000"
+    depends_on:
+      - database
+    networks:
+      - app-network
+
+  database:
+    image: mongo:7
+    container_name: database
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
+    driver: bridge
